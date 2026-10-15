@@ -13,3 +13,4 @@ kubectl get all -n travel-app
 
 # Service चे endpoints
 kubectl get endpoints travel-app-svc -n travel-app
+
