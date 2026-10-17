@@ -9,12 +9,20 @@ chmod 700 get_helm.sh
 helm version
 
 --------------------------------------------------------------------------
-helm repo add kubernetes-dashboard \
-  https://kubernetes.github.io/dashboard/
 
+
+#!/bin/bash
+set -e
+
+helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
 helm repo update
 
-helm upgrade --install kubernetes-dashboard \
-  kubernetes-dashboard/kubernetes-dashboard \
-  --create-namespace \
-  --namespace kubernetes-dashboard
+helm upgrade --install headlamp headlamp/headlamp \
+  --namespace headlamp \
+  --create-namespace
+
+kubectl rollout status deployment/headlamp \
+  -n headlamp --timeout=180s
+
+kubectl get pods -n headlamp
+kubectl get svc -n headlamp
