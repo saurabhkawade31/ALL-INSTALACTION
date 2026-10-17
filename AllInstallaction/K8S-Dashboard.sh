@@ -32,3 +32,10 @@ kubectl get svc -n headlamp
 
 kubectl port-forward --address 0.0.0.0 \
   -n headlamp svc/headlamp 8080:80
+
+
+================================================================================
+# Login sathi token tayar karane 
+
+kubectl create serviceaccount headlamp-admin -n headlamp
+kubectl create token headlamp-admin -n headlamp
