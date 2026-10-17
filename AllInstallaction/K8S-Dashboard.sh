@@ -26,3 +26,9 @@ kubectl rollout status deployment/headlamp \
 
 kubectl get pods -n headlamp
 kubectl get svc -n headlamp
+
+
+-------------------------------------------------------------------------------
+
+kubectl port-forward --address 0.0.0.0 \
+  -n headlamp svc/headlamp 8080:80
